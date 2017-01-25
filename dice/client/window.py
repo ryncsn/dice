@@ -31,13 +31,13 @@ class Window(object):
 
         self.stat_panel = panel.ListPanel(
             self.screen,
-            self.height, self.width / 6,
+            self.height, int(self.width / 6),
             format_str='{count} {key}'
         )
 
         self.items_panel = panel.ListPanel(
             self.screen,
-            self.height, self.width / 2,
+            self.height, int(self.width / 2),
             x=self.width / 6, y=0,
             format_str='{item}'
         )

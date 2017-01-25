@@ -17,9 +17,9 @@ class _Catalog(object):
 
 class _Pad(object):
     def __init__(self, height, width):
-        self.width = width
-        self.height = height
-        self.pad = curses.newpad(height, width)
+        self.width = int(width)
+        self.height = int(height)
+        self.pad = curses.newpad(self.height, self.width)
         self.cur_y = 1
 
     def box(self):
@@ -30,9 +30,9 @@ class _Pad(object):
         self.cur_y = 1
 
     def resize(self, height, width):
-        self.width = width
-        self.height = height
-        self.pad.resize(height, width)
+        self.width = int(width)
+        self.height = int(height)
+        self.pad.resize(self.height, self.width)
 
     def println(self, text, align='left', style=curses.A_NORMAL):
         if self.cur_y > self.height - 2:
@@ -55,17 +55,17 @@ class _PanelBase(object):
 
     def __init__(self, screen, height, width, x=0, y=0):
         self.screen = screen
-        self.height = height
-        self.width = width
+        self.height = int(height)
+        self.width = int(width)
         self.pad = _Pad(self.height, self.width)
         self.resize(self.height, self.width)
-        self.x, self.y = x, y
+        self.x, self.y = int(x), int(y)
         self.keypress_listeners = {}
 
     def resize(self, height, width):
-        self.height = height
-        self.width = width
-        self.pad.resize(height, width)
+        self.height = int(height)
+        self.width = int(width)
+        self.pad.resize(self.height, self.width)
 
     def add_keypress_listener(self, name, key, callback):
         if name not in self.keypress_listeners:
