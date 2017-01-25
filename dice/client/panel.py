@@ -199,7 +199,7 @@ class ListPanel(_PanelBase):
             item_idx = None
             if self.catalogs:
                 # pylint: disable=unsubscriptable-object
-                cat_name = self.catalogs.keys()[0]
+                cat_name = list(self.catalogs.keys())[0]
                 items = self.catalogs[cat_name].items
                 if items:
                     item_idx = 0

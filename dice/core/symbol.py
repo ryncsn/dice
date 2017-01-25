@@ -54,7 +54,7 @@ class Bytes(SymbolBase):
         Generate a random bytes string.
         """
         cnt = int(random.weibullvariate(65535, 1))
-        return ''.join(bt for bt in os.urandom(cnt) if bt != b'\x00')
+        return ''.join(str(bt) for bt in os.urandom(cnt) if bt != b'\x00')
 
 
 class NonEmptyBytes(Bytes):
@@ -66,7 +66,7 @@ class NonEmptyBytes(Bytes):
         Generate a random non-empty bytes string.
         """
         cnt = int(random.weibullvariate(65535, 1)) + 1
-        return ''.join(bt for bt in os.urandom(cnt) if bt != b'\x00')
+        return ''.join(str(bt) for bt in os.urandom(cnt) if bt != b'\x00')
 
 
 class String(Bytes):

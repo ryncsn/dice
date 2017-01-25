@@ -284,7 +284,7 @@ class DiceApp(object):
         Iteratively run tests.
         """
         while not self.exiting:
-            item = random.choice(self.providers.values()).generate()
+            item = random.choice(list(self.providers.values())).generate()
             item.run()
             self.last_item = item
 
@@ -323,7 +323,7 @@ class DiceApp(object):
         panel.clear()
         cat_name, item_idx = self.cur_class
         if cat_name is not None and item_idx is not None:
-            item_name, stat = self.stats[cat_name].items()[item_idx]
+            item_name, stat = list(self.stats[cat_name].items())[item_idx]
             try:
                 for item in self.stats[cat_name][item_name].queue:
                     bundle = {'item': item.cmdline}
@@ -336,7 +336,7 @@ class DiceApp(object):
         panel.clear()
         cat_name, item_idx = self.cur_class
         if cat_name is not None and item_idx is not None:
-            item_name, stat = self.stats[cat_name].items()[item_idx]
+            item_name, stat = list(self.stats[cat_name].items())[item_idx]
             items = self.stats[cat_name][item_name].queue
 
             item_name, item_idx = self.cur_item

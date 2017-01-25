@@ -122,10 +122,10 @@ def run(cmdline, timeout=10):
 
             select.select([process.stdout, process.stderr], [], [], 0.1)
             try:
-                out_lines = process.stdout.read()
+                out_lines = str(process.stdout.read())
                 if out_lines:
                     result.stdout += out_lines
-                err_lines = process.stderr.read()
+                err_lines = str(process.stderr.read())
                 if err_lines:
                     result.stderr += err_lines
             except IOError as detail:
